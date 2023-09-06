@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.33920.267
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConflictScanner", "ConflictScanner.csproj", "{FA378FF6-5C1A-400B-BF2E-DA4CA9A99DB8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FA378FF6-5C1A-400B-BF2E-DA4CA9A99DB8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA378FF6-5C1A-400B-BF2E-DA4CA9A99DB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA378FF6-5C1A-400B-BF2E-DA4CA9A99DB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA378FF6-5C1A-400B-BF2E-DA4CA9A99DB8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {830C81A9-60D0-4566-8902-FAB42B7CB75B}
+	EndGlobalSection
+EndGlobal
