@@ -4,11 +4,20 @@
     <TargetFramework>net481</TargetFramework>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <AssemblyTitle>ConflictScanner</AssemblyTitle>
-    <Product>ConflictScanner</Product>
+    <Product>Unturned Conflict Scanner</Product>
     <Copyright>Copyright ©  2023</Copyright>
     <OutputPath>bin\$(Configuration)\</OutputPath>
     <LangVersion>preview</LangVersion>
     <Nullable>enable</Nullable>
+    <Company />
+    <Authors>Daniel Willett</Authors>
+    <Description>Simple tool for checking for ID conflicts and finding free IDs and GUIDs from a base folder. </Description>
+    <PackageProjectUrl>https://github.com/DanielWillett/ConflictScanner</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/DanielWillett/ConflictScanner.git</RepositoryUrl>
+    <PackageTags>unturned;tool;console app</PackageTags>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <Title>Unturned Conflict Scanner</Title>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugType>full</DebugType>
@@ -27,5 +36,11 @@
     <Reference Include="UnturnedDat">
       <HintPath>..\..\..\..\..\SteamCMD\steamapps\common\U3DS\Unturned_Data\Managed\UnturnedDat.dll</HintPath>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
 </Project>
