@@ -16,6 +16,7 @@ internal class AssetReader
             DirectoryInfo dir = new DirectoryInfo(folder);
             foreach (FileInfo info in dir.EnumerateFiles("*", SearchOption.AllDirectories))
             {
+                // looks for a lone asset file
                 if (info.Extension.Equals(".asset", StringComparison.Ordinal))
                 {
                     string? dirName = Path.GetFileName(Path.GetDirectoryName(info.FullName));
@@ -28,6 +29,7 @@ internal class AssetReader
                         
                     }
                 }
+                // looks for a dat file in its folder
                 else if (info.Extension.Equals(".dat", StringComparison.Ordinal))
                 {
                     string? dirName = Path.GetFileName(Path.GetDirectoryName(info.FullName));
@@ -39,6 +41,7 @@ internal class AssetReader
                 FileAsset? asset = TryRead(dict, info);
                 if (asset != null)
                 {
+                    asset.CacheLocal(_parser);
                     rtn.Add(asset);
                 }
             }
@@ -52,6 +55,7 @@ internal class AssetReader
         Guid guid;
         ushort id = 0;
         Type? assetType = null;
+        // v2 metadata
         if (dictionary.TryGetDictionary("Metadata", out DatDictionary metadata))
         {
             if (!metadata.TryParseGuid("Guid", out guid))
@@ -68,16 +72,13 @@ internal class AssetReader
         }
         else
         {
+            // v1 metadata
             dictionary.TryParseGuid("GUID", out guid);
             dictionary.TryParseUInt16("ID", out id);
         }
-        if (guid == Guid.Empty)
-        {
-            ReportError(file, "GUID was empty.");
-            return null;
-        }
         if (assetType == null)
         {
+            // v1 metadata
             if (!dictionary.TryGetString("Type", out string typeStr))
             {
                 ReportError(file, "Missing Type property.");
@@ -105,14 +106,14 @@ internal class AssetReader
         }
 
         FileAsset asset = new FileAsset(assetType, file, guid, id, dictionary);
-        asset.CacheLocal(_parser);
         return asset;
     }
-    private void ReportError(FileInfo file, string message)
+    private static void ReportError(FileInfo file, string message)
     {
-        Console.ForegroundColor = ConsoleColor.Yellow;
+        ConsoleColor clr = Console.ForegroundColor;
+        Console.ForegroundColor = ConsoleColor.DarkGray;
         Console.WriteLine($"Asset \"{Path.GetFileNameWithoutExtension(file.FullName)}\" load error: \"{message}\".{Environment.NewLine}\tFile: {file.FullName}");
-        Console.ResetColor();
+        Console.ForegroundColor = clr;
     }
 
     private DatDictionary ReadFile(string path)

@@ -5,6 +5,8 @@ using System.IO;
 namespace UnturnedWorkshopAnalyst.Assets;
 public class FileAsset
 {
+    public const string Language = "English";
+
     private bool _cachedLocal;
     private bool _cachedFriendlyName;
     private DatDictionary? _local;
@@ -48,17 +50,23 @@ public class FileAsset
     {
         AssetType = assetType;
         File = file;
+
+        // if file name is 'Asset.dat', get the asset name from the parent folder.
         if (file.FullName.EndsWith("Asset.dat", StringComparison.Ordinal))
             AssetName = Path.GetFileName(Path.GetDirectoryName(file.FullName)!);
         else
             AssetName = Path.GetFileNameWithoutExtension(file.FullName);
+
         Dictionary = dictionary;
         Guid = guid;
         Id = id;
-        string lclPath = Path.Combine(Path.GetDirectoryName(File.FullName)!, "English.dat");
+        string lclPath = Path.Combine(Path.GetDirectoryName(File.FullName)!, Language + ".dat");
+
+        // English.dat file
         if (System.IO.File.Exists(lclPath))
             LocalPath = lclPath;
-        
+
+        // category from asset type
         if (typeof(ItemAsset).IsAssignableFrom(assetType))
             Category = EAssetType.ITEM;
         else if (typeof(EffectAsset).IsAssignableFrom(assetType))
