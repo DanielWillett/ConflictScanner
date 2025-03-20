@@ -39,6 +39,30 @@ A unique GUID will be generated and checked against the mod and regenerated unti
 
 ![image](https://github.com/DanielWillett/ConflictScanner/assets/12886600/3d0c1637-0ecf-48bb-a7a3-eb1780534a3b)
 
+### Find
+Use a 'fuzzy search' algorithm to find assets by name, GUID, or ID.
+
+Syntax:
+`find [type] search...`
+
+Note that results are returned reversed and will return as many as will fill the console.
+
+Examples (screenshots from vanilla result set):
+
+Search all vehicles for 'hatchback'.
+`find vehicle hatchback`
+
+Search all ItemGunAssets for 'peace'. 
+`find gun peace`
+
+Search all vehicle redirect assets for 'green'. 
+`find VehicleRedirector green`
+
+Find all assets with ID 193, then search all assets by '193'.
+`find 193`
+
+Find only assets with GUID 2a33663da0ab461abe9cb545426d6b3d. 
+`find 2a33663da0ab461abe9cb545426d6b3d`
 
 ### Conflicts
 Will scan all loaded files for assets that are either:
