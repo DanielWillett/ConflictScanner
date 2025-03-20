@@ -221,7 +221,7 @@ internal static partial class Program
     {
         // get a path from console and validate it.
         Console.ForegroundColor = ConsoleColor.White;
-        Console.WriteLine("Enter a result set: (or an installed workshop ID, 'all' (a) for all vanlla + workshop, 'enabled' (e) for all vanlla + **enabled** workshop, 'vanilla' (v) for just vanilla assets):");
+        Console.WriteLine("Enter a result set:");
         Console.WriteLine("  'all'    /'a': All installed vanilla and workshop content.");
         Console.WriteLine("  'enabled'/'e': All installed vanilla and workshop content enabled in the 'Workshop -> Manage' menu.");
         Console.WriteLine("  'vanilla'/'v': All vanilla content including the 'Maps' folder.");
